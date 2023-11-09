@@ -33,23 +33,22 @@ def index():
 ## 投稿機能
 
 ```python
-Copy code
-@app.route('/')
-def index():
-    return make_top_page_html()
+@app.route('/write')
+def form_write():
+    # データの取得と保存
+    return redirect('/')
 ```
 投稿機能
 フォームからのデータを受け取り、ログに記録した後、トップページにリダイレクトします。
 
-## ログの読み込みと追加
+## ログデータの読み込みと更新
 ```python
-Copy code
-@app.route('/write')
-def form_write():
-    # ...
-    return redirect('/')
+def load_log():
+    # ログファイルの読み込み
+
+def append_log(record):
+    # ログデータへの追記
 ```
-ログデータの読み込みと更新
 ログファイルからデータを読み込む関数と、新しいログエントリを追加する関数です。
 
 ## HTML生成
