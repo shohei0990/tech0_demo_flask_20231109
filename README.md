@@ -16,7 +16,7 @@ from datetime import datetime
 logfile = 'bbs_log.json' # 保存先のファイル名を設定
 logdata = {'lastid': 0, 'logs': []}
 app = Flask(__name__) # Flaskアプリケーションを作成
-
+```
 
 ここでは、アプリケーションのために必要なモジュールをインポートし、ログファイルの名前を設定して、Flaskのインスタンスを生成しています。
 
