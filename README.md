@@ -53,12 +53,11 @@ def append_log(record):
 
 ## HTML生成
 ```python
-Copy code
-def load_log():
-    # ...
+def make_logs():
+    # ログからHTMLを生成
 
-def append_log(record):
-    # ...
+def make_top_page_html():
+    # トップページのHTMLを生成
 ```
 HTMLコンテンツの生成
 掲示板のログエントリからHTMLを生成する関数と、トップページ全体のHTMLを生成する関数です。
@@ -82,9 +81,9 @@ Copy code
 {
     "lastid": 3,
     "logs": [
-        {"name": "HH", "msg": "どうですか？", "time": 1690960437.9061089, "id": 1},
-        {"name": "やぎまさ", "msg": "どうでしょ？", "time": 1698927471.596182, "id": 2},
-        {"name": "fumi-san", "msg": "どだい？", "time": 1699434818.6622488, "id": 3}
+        {"name": "●●", "msg": "どうですか？", "time": 1690960437.9061089, "id": 1},
+        {"name": "▼▼", "msg": "どうでしょ？", "time": 1698927471.596182, "id": 2},
+        {"name": "■■", "msg": "どだい？", "time": 1699434818.6622488, "id": 3}
     ]
 }
 ```
