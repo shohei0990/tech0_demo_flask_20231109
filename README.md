@@ -110,8 +110,14 @@ def index():
 ```python
 @app.route('/write')
 def form_write():
-    # データの取得と保存
-    return redirect('/')
+    # 投稿されたデータを取得する --- (※4)
+    name = request.args.get('name', '')
+    msg = request.args.get('msg', '')
+    # パラメータのチェック --- (※5)
+    if name == '' or msg == '': return 'パラメータの指定エラー'
+    # データを保存 --- (※6)
+    append_log({'name': name, 'msg': msg, 'time': time.time()})
+    return redirect('/') # トップページに移動
 ```
 投稿機能
 フォームからのデータを受け取り、ログに記録した後、トップページにリダイレクトします。
@@ -119,17 +125,38 @@ def form_write():
 ## ログデータの読み込みと更新
 ```python
 def load_log():
-    # ログファイルの読み込み
+    global logdata
+    if os.path.exists(logfile):
+        with open(logfile, encoding='utf-8') as fp:
+            logdata = json.load(fp)
 
+# JSONファイルにデータを追記する --- (※8)
 def append_log(record):
-    # ログデータへの追記
+    logdata['lastid'] += 1
+    record['id'] = logdata['lastid']
+    logdata['logs'].append(record) # データを追記
+    with open(logfile, 'w', encoding='utf-8') as fp:
+        json.dump(logdata, fp) # ファイルに書き込む
 ```
 ログファイルからデータを読み込む関数と、新しいログエントリを追加する関数です。
 
 ## HTML生成
 ```python
 def make_logs():
-    # ログからHTMLを生成
+    # 書き込まれたログを元にしてHTMLを生成して返す --- (※9)
+    s = ''
+    for log in reversed(logdata['logs']):
+        name = html.escape(log['name']) # 名前をHTMLに変換 --- (※10)
+        msg = html.escape(log['msg']) # メッセージをHTMLに変換
+        t = datetime.fromtimestamp(log['time']).strftime('%m/%d %H:%M')
+        s += '''
+        <div class="box">
+            <div class="has-text-info">({}) {} さん</div>
+            <div>{}</div>
+            <div class="has-text-right is-size-7">{}</div>
+        </div>
+        '''.format(log['id'], name, msg, t)
+    return s
 
 def make_top_page_html():
     # トップページのHTMLを生成
