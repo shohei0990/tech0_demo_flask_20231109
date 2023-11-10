@@ -82,6 +82,8 @@ def html2():
 
 my_dict という名前のPython辞書を render_template 関数に渡しています。この辞書には3つのキーがあり、それぞれ文字列やリストを値として持っています。render_template 関数は、この辞書をテンプレートエンジンに渡し、index.html テンプレート内の対応するプレースホルダーを辞書の値で置き換えを行います。  
 
+<br>
+<br>
 ##  Flaskによる掲示板アプリケーション:sample1 の導入
 ```python
 from flask import Flask, request, redirect
@@ -179,7 +181,7 @@ def form_write():
 ```
 
 @app.route('/write'): は、/write URLにアクセスがあったときにform_write関数を呼び出します。
-この書き込みフォーム(<form class="box" action="/write" method="GET">)からのデータを受け取り、ログappend_log()に記録した後、トップページ'/'にリダイレクトします。
+この書き込みフォームからのデータを受け取り、ログappend_log()に記録した後、トップページ'/'にリダイレクトします。
 request.args.get('name', ''): request.argsはURLのクエリパラメータを辞書のようにアクセスできるオブジェクトです。nameとmsgは、HTMLフォームの各input要素のname属性に対応しています。GETメソッドを使用すると、これらの値はURLの一部として送信され、Flask側で簡単にアクセスできます。
 
 ### データの流れ
