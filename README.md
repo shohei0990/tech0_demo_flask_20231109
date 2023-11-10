@@ -28,6 +28,15 @@ pip install Flask
 ・python app.py 起動  
 
 ```python
+from flask import Flask
+app = Flask(__name__) # Flaskアプリケーションを作成
+```
+Flaskのおまじない。 Flask クラスのインスタンスを作成し、変数 app に割り当てている。  
+__name__ は、現在のPythonスクリプトの名前を表す特別な変数です。スクリプトが直接実行される場合（コマンドラインから実行される場合など）、__name__ は "__main__" という値になります。Flask クラスにこの変数を渡すことで、Flaskはアプリケーションのルートディレクトリを正確に特定でき、テンプレートや静的ファイルを適切に見つけることができます。
+
+
+## 初期導入
+```python
 from flask import Flask, request, redirect
 import json, os, time, html
 from datetime import datetime
