@@ -17,7 +17,7 @@ sample1/            # flask の掲示板アプリフォルダ
 ├── bbs.py          # flask の掲示板アプリコード
 └── bbs_log.json    # flask の掲示板アプリ書込・読込用jsonファイル
 ```
-## 初期導入 (ファイル:sample0)
+## 1. 初期導入 (ファイル:sample0)
 
 ```python
 pip install Flask
@@ -84,7 +84,8 @@ my_dict という名前のPython辞書を render_template 関数に渡してい�
 
 <br>
 <br>
-##  Flaskによる掲示板アプリケーション:sample1 の導入
+
+## 2.Flaskによる掲示板アプリケーション:sample1 の導入
 ```python
 from flask import Flask, request, redirect
 import json, os, time, html
