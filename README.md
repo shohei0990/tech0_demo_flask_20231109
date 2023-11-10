@@ -78,8 +78,9 @@ def html2():
     }
     return render_template('index.html', my_dict=my_dict)  # render_templateを使用
 ```
-・起動後、http://127.0.0.1:8080/html2 にアクセス 
-my_dict という名前のPython辞書を render_template 関数に渡しています。この辞書には3つのキーがあり、それぞれ文字列やリストを値として持っています。render_template 関数は、この辞書をテンプレートエンジンに渡し、index.html テンプレート内の対応するプレースホルダーを辞書の値で置き換えを行います。
+・起動後、http://127.0.0.1:8080/html2 にアクセス  
+
+my_dict という名前のPython辞書を render_template 関数に渡しています。この辞書には3つのキーがあり、それぞれ文字列やリストを値として持っています。render_template 関数は、この辞書をテンプレートエンジンに渡し、index.html テンプレート内の対応するプレースホルダーを辞書の値で置き換えを行います。  
 
 ##  Flaskによる掲示板アプリケーション:sample1 の導入
 ```python
