@@ -104,62 +104,7 @@ app = Flask(__name__) # Flaskアプリケーションを作成
 def index():
     return make_top_page_html()
 ```
-ルート（/）へのアクセスがあった場合に、トップページのHTMLを生成して返します
-
-## 投稿機能
-
-```python
-@app.route('/write')
-def form_write():
-    # 投稿されたデータを取得する --- (※4)
-    name = request.args.get('name', '')
-    msg = request.args.get('msg', '')
-    # パラメータのチェック --- (※5)
-    if name == '' or msg == '': return 'パラメータの指定エラー'
-    # データを保存 --- (※6)
-    append_log({'name': name, 'msg': msg, 'time': time.time()})
-    return redirect('/') # トップページに移動
-```
-
-書き込みフォーム(<form class="box" action="/write" method="GET">)からのデータを受け取り、ログappend_log()に記録した後、トップページ'/'にリダイレクトします。
-
-## ログデータの読み込みと更新
-```python
-def load_log():
-    global logdata
-    if os.path.exists(logfile):
-        with open(logfile, encoding='utf-8') as fp:
-            logdata = json.load(fp)
-
-# JSONファイルにデータを追記する --- (※8)
-def append_log(record):
-    logdata['lastid'] += 1
-    record['id'] = logdata['lastid']
-    logdata['logs'].append(record) # データを追記
-    with open(logfile, 'w', encoding='utf-8') as fp:
-        json.dump(logdata, fp) # ファイルに書き込む
-```
-ログファイルからデータを読み込む関数と、新しいログエントリを追加する関数です。
-
-## HTML生成
-```python
-def make_logs():
-    # 書き込まれたログを元にしてHTMLを生成して返す --- (※9)
-    s = ''
-    for log in reversed(logdata['logs']):
-        name = html.escape(log['name']) # 名前をHTMLに変換 --- (※10)
-        msg = html.escape(log['msg']) # メッセージをHTMLに変換
-        t = datetime.fromtimestamp(log['time']).strftime('%m/%d %H:%M')
-        s += '''
-        <div class="box">
-            <div class="has-text-info">({}) {} さん</div>
-            <div>{}</div>
-            <div class="has-text-right is-size-7">{}</div>
-        </div>
-        '''.format(log['id'], name, msg, t)
-    return s
-```
-掲示板のログエントリからHTMLを生成する関数です。
+ルート（/）へのアクセスがあった場合に、トップページのHTMLを生成して返します。
 
 ## HTMLメインページ
 ```python
@@ -223,6 +168,8 @@ def make_top_page_html():
 action="/write": この属性は、フォームが送信されたときにデータを送信するURLを指定します。この場合、/writeエンドポイントにデータが送信されます。
 method="GET": この属性は、フォームデータを送信するためのHTTPメソッドを指定します。GETメソッドは、データをURLの一部として送信します。
 
+
+## 投稿機能
 ```python
 @app.route('/write')
 def form_write():
@@ -232,6 +179,7 @@ def form_write():
 ```
 
 @app.route('/write'): は、/write URLにアクセスがあったときにform_write関数を呼び出します。
+この書き込みフォーム(<form class="box" action="/write" method="GET">)からのデータを受け取り、ログappend_log()に記録した後、トップページ'/'にリダイレクトします。
 request.args.get('name', ''): request.argsはURLのクエリパラメータを辞書のようにアクセスできるオブジェクトです。nameとmsgは、HTMLフォームの各input要素のname属性に対応しています。GETメソッドを使用すると、これらの値はURLの一部として送信され、Flask側で簡単にアクセスできます。
 
 ### データの流れ
@@ -239,7 +187,25 @@ request.args.get('name', ''): request.argsはURLのクエリパラメータを�
 ブラウザは/writeエンドポイントに対してGETリクエストを送信し、クエリパラメータとしてnameとmsgの値を含めます。  
 Flaskアプリケーションのform_write関数が呼び出され、request.argsを通じてこれらのパラメータにアクセスし、処理を行います。  
 このメカニズムにより、HTMLフォームからFlaskアプリケーションへの値の受け渡しが可能になります。  
-  
+
+## ログデータの読み込みと更新
+```python
+def load_log():
+    global logdata
+    if os.path.exists(logfile):
+        with open(logfile, encoding='utf-8') as fp:
+            logdata = json.load(fp)
+
+# JSONファイルにデータを追記する --- (※8)
+def append_log(record):
+    logdata['lastid'] += 1
+    record['id'] = logdata['lastid']
+    logdata['logs'].append(record) # データを追記
+    with open(logfile, 'w', encoding='utf-8') as fp:
+        json.dump(logdata, fp) # ファイルに書き込む
+```
+ログファイルからデータを読み込む関数と、新しいログエントリを追加する関数です。
+
 ## JSONログファイルの構造
 掲示板アプリケーションで使用するJSONログファイルの例です。
 
@@ -255,3 +221,27 @@ Copy code
     ]
 }
 ```
+
+## HTML生成
+```python
+def make_logs():
+    # 書き込まれたログを元にしてHTMLを生成して返す --- (※9)
+    s = ''
+    for log in reversed(logdata['logs']):
+        name = html.escape(log['name']) # 名前をHTMLに変換 --- (※10)
+        msg = html.escape(log['msg']) # メッセージをHTMLに変換
+        t = datetime.fromtimestamp(log['time']).strftime('%m/%d %H:%M')
+        s += '''
+        <div class="box">
+            <div class="has-text-info">({}) {} さん</div>
+            <div>{}</div>
+            <div class="has-text-right is-size-7">{}</div>
+        </div>
+        '''.format(log['id'], name, msg, t)
+    return s
+```
+掲示板のログエントリからHTMLを生成する関数です。
+
+
+  
+
