@@ -96,7 +96,6 @@ app = Flask(__name__) # Flaskアプリケーションを作成
 ここでは、アプリケーションのために必要なモジュールをインポートし、ログファイルの名前を設定して、Flaskのインスタンスを生成しています。
 
 ![Image 1](https://imgur.com/AK1mRVY.jpg)
-![Image 2](https://i.imgur.com/zjIYgJp.jpg)
 
 ## ルートへのアクセス
 
