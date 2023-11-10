@@ -23,7 +23,6 @@ sample1/            # flask の掲示板アプリフォルダ
 pip install Flask
 ```
 
-### 初期導入
 ・sample0 ディレクトリに移動  
 ・python app.py 起動  
 
