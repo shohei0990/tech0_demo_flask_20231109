@@ -121,9 +121,7 @@ def form_write():
     return redirect('/') # トップページに移動
 ```
 
-
-投稿機能
-フォームからのデータを受け取り、ログに記録した後、トップページにリダイレクトします。
+書き込みフォーム(<form class="box" action="/write" method="GET">)からのデータを受け取り、ログappend_log()に記録した後、トップページ'/'にリダイレクトします。
 
 ## ログデータの読み込みと更新
 ```python
@@ -201,6 +199,47 @@ def make_top_page_html():
 ```
 トップページ全体のHTMLを生成する関数です。
 
+```html
+<form class="box" action="/write" method="GET">
+    <div class="field">
+        <label class="label">お名前:</label>
+        <div class="control">
+            <input class="input" type="text" name="name" value="名無し">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">メッセージ:</label>
+        <div class="control">
+            <input class="input" type="text" name="msg">
+        </div>
+    </div>
+    <div class="field">
+        <div class="control">
+            <input class="button is-primary" type="submit" value="投稿">
+        </div>
+    </div>
+</form>
+```
+action="/write": この属性は、フォームが送信されたときにデータを送信するURLを指定します。この場合、/writeエンドポイントにデータが送信されます。
+method="GET": この属性は、フォームデータを送信するためのHTTPメソッドを指定します。GETメソッドは、データをURLの一部として送信します。
+
+```python
+@app.route('/write')
+def form_write():
+    name = request.args.get('name', '')
+    msg = request.args.get('msg', '')
+    ...
+```
+
+@app.route('/write'): は、/write URLにアクセスがあったときにform_write関数を呼び出します。
+request.args.get('name', ''): request.argsはURLのクエリパラメータを辞書のようにアクセスできるオブジェクトです。nameとmsgは、HTMLフォームの各input要素のname属性に対応しています。GETメソッドを使用すると、これらの値はURLの一部として送信され、Flask側で簡単にアクセスできます。
+
+### データの流れ
+ユーザーがフォームにデータを入力し、「投稿」ボタンをクリックします。  
+ブラウザは/writeエンドポイントに対してGETリクエストを送信し、クエリパラメータとしてnameとmsgの値を含めます。  
+Flaskアプリケーションのform_write関数が呼び出され、request.argsを通じてこれらのパラメータにアクセスし、処理を行います。  
+このメカニズムにより、HTMLフォームからFlaskアプリケーションへの値の受け渡しが可能になります。  
+  
 ## JSONログファイルの構造
 掲示板アプリケーションで使用するJSONログファイルの例です。
 
