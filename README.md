@@ -11,6 +11,15 @@ Flaskではシンプルでカスタマイズ性が高いというメリットを
 ```python
 pip install Flask
 ```
+### ファイル構造
+your-application/
+├── app.py          # Flaskアプリケーションのメインファイル
+└── templates/      # テンプレートファイルを格納するフォルダ
+    ├── index.html  # テンプレートファイルの例
+    └── testapp/    # 別のテンプレートグループ用のサブフォルダ
+        └── index.html  # 'testapp' グループのテンプレートファイル
+
+
 
 ```python
 from flask import Flask, request, redirect
