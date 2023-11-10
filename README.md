@@ -157,21 +157,45 @@ def make_logs():
         </div>
         '''.format(log['id'], name, msg, t)
     return s
-
-def make_top_page_html():
-    # トップページのHTMLを生成
 ```
 HTMLコンテンツの生成
 掲示板のログエントリからHTMLを生成する関数と、トップページ全体のHTMLを生成する関数です。
 
-## サーバーの起動
-アプリケーションが直接実行された際（__name__ == '__main__'）、ログデータを読み込み、Webサーバーを起動します。
-
+## HTMLメインページ
 ```python
-Copy code
-if __name__ == '__main__':
-    load_log()  # ログデータを読み込む
-    app.run('127.0.0.1', 8080, debug=True)
+def make_top_page_html():
+    # 掲示板のメインページを生成して返す --- (※11)
+    return '''
+    <!DOCTYPE html><html><head><meta charset="UTF-8">
+    <title>掲示板</title>
+    <link rel="stylesheet"
+     href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    </head><body>
+    <!-- タイトル -->
+    <div class="hero is-dark"><div class="hero-body">
+        <h1 class="title">掲示板</h1>
+    </div></div>
+    <!-- 書き込みフォーム -->
+    <form class="box" action="/write" method="GET">
+    <div class="field">
+        <label class="label">お名前:</label>
+        <div class="controll">
+            <input class="input" type="text" name="name" value="名無し">
+        </div>
+    </div>
+    <div class="field">
+        <label class="label">メッセージ:</label>
+        <div class="controll">
+            <input class="input" type="text" name="msg">
+        </div>
+    </div>
+    <div class="field">
+        <div class="controll">
+            <input class="button is-primary" type="submit" value="投稿">
+        </div>
+    </div>
+    </form>
+    ''' + make_logs() + '''</body></html>'''
 ```
 
 ## JSONログファイルの構造
