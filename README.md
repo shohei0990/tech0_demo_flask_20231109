@@ -17,7 +17,7 @@ sample1/            # flask の掲示板アプリフォルダ
 ├── bbs.py          # flask の掲示板アプリコード
 └── bbs_log.json    # flask の掲示板アプリ書込・読込用jsonファイル
 ```
-## 初期導入
+## 初期導入 (ファイル:sample0)
 
 ```python
 pip install Flask
@@ -37,6 +37,7 @@ __name__ は、現在のPythonスクリプトの名前を表す特別な変数�
 if __name__ == '__main__': # Webサーバーを起動 
     app.run('127.0.0.1', 8080, debug=True)
 ```
+
 このコードブロックは、Pythonで書かれたFlaskアプリケーションをローカルサーバーで実行するためのものです。<br><br>
 ・127.0.0.1 のIPアドレスと 8080 のポートで実行する。    
 ・debug=True はデバッグモードを有効にする。
@@ -60,8 +61,27 @@ def html():
 ・起動後、http://127.0.0.1:8080/html にアクセス  
 　➡ それぞれの表示の読み込みの違いを確認してみよう。
 
+### その他：Jinja2テンプレートエンジン
 
-## 初期導入
+```python
+from flask import render_template
+```
+Jinja2を使用して、テンプレートファイル（今回の場合は index.html）をレンダリングします。Jinja2は、Pythonの辞書やオブジェクトをHTMLテンプレートに埋め込むことができる機能を提供している。
+
+```python
+@app.route('/html2')
+def html2():
+    my_dict = {
+        'insert_something1': 'insert_something1部分です。',
+        'insert_something2': 'insert_something2部分です。',
+        'test_titles': ['タイトル1', 'タイトル2', 'タイトル3']
+    }
+    return render_template('index.html', my_dict=my_dict)  # render_templateを使用
+```
+・起動後、http://127.0.0.1:8080/html2 にアクセス 
+my_dict という名前のPython辞書を render_template 関数に渡しています。この辞書には3つのキーがあり、それぞれ文字列やリストを値として持っています。render_template 関数は、この辞書をテンプレートエンジンに渡し、index.html テンプレート内の対応するプレースホルダーを辞書の値で置き換えを行います。
+
+##  Flaskによる掲示板アプリケーション:sample1 の導入
 ```python
 from flask import Flask, request, redirect
 import json, os, time, html
