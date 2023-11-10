@@ -24,8 +24,8 @@ pip install Flask
 ```
 
 ### 初期導入
-・sample0 ディレクトリに移動
-・python app.py 起動
+・sample0 ディレクトリに移動  
+・python app.py 起動  
 
 ```python
 from flask import Flask, request, redirect
