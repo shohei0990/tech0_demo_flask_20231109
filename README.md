@@ -96,9 +96,8 @@ app = Flask(__name__) # Flaskアプリケーションを作成
 ここでは、アプリケーションのために必要なモジュールをインポートし、ログファイルの名前を設定して、Flaskのインスタンスを生成しています。
 
 
-![Image 1](https://imgur.com/a/6vhyaq7.png)
+![Image 1](https://imgur.com/a/6vhyaq7.jpg)
 
-![Image 2](https://i.imgur.com/zjIYgJp.jpg)
 
 ## ルートへのアクセス
 
@@ -123,6 +122,8 @@ def form_write():
     append_log({'name': name, 'msg': msg, 'time': time.time()})
     return redirect('/') # トップページに移動
 ```
+![Image 2](https://i.imgur.com/zjIYgJp.jpg)
+
 投稿機能
 フォームからのデータを受け取り、ログに記録した後、トップページにリダイレクトします。
 
