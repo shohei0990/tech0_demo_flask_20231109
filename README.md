@@ -161,8 +161,7 @@ def make_logs():
         '''.format(log['id'], name, msg, t)
     return s
 ```
-HTMLコンテンツの生成
-掲示板のログエントリからHTMLを生成する関数と、トップページ全体のHTMLを生成する関数です。
+掲示板のログエントリからHTMLを生成する関数です。
 
 ## HTMLメインページ
 ```python
@@ -200,6 +199,7 @@ def make_top_page_html():
     </form>
     ''' + make_logs() + '''</body></html>'''
 ```
+トップページ全体のHTMLを生成する関数です。
 
 ## JSONログファイルの構造
 掲示板アプリケーションで使用するJSONログファイルの例です。
