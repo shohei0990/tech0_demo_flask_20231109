@@ -257,7 +257,9 @@ def make_logs():
 ## 3.Flaskステップアップ課題
 
 ### 掲示板アプリのHTMLをテンプレートエンジンに置き換えみよう
-① HTMLメインページのdef make_top_page_html()をsample0で行ったテンプレートエンジンに置き換えてみよう
+① HTMLメインページのdef make_top_page_html()をsample0で行ったテンプレートエンジンに置き換えてみよう。
+
+② JSONログファイルをNoSQL データベースであるfirebaseに置き換えてみよう。（作成中）
 
 
   
