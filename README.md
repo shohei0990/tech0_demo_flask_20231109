@@ -26,7 +26,7 @@ sample1/            # flask の掲示板アプリフォルダ
 └── bbs_log.json    # flask の掲示板アプリ書込・読込用jsonファイル
 ```
 ## 1. 初期導入 (ファイル:sample0)
-
+・最初に簡単なコードで、flaskに慣れてみよう。
 ```python
 pip install Flask
 ```
