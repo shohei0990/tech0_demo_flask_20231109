@@ -6,8 +6,8 @@
 ## 概要
 Flaskではシンプルでカスタマイズ性が高いというメリットを活用し、簡単なWebアプリケーションやサービスを作成できたり、短いコードで手早く機能を実装したプロトタイプを作成したり、処理するリクエスト数が少ないBotなども作成ができます。大規模なシステムには向きませんが、小規模の環境で使うには小回りがきくマイクロウェブアプリケーションフレームワークです。今回は、flaskを学ぶために簡単な掲示板アプリをつくります。（サンプルコード有）
 
-![Image 4](https://imgur.com/9ohNGFu)
-![Image 5](https://imgur.com/ArueFpS)
+![Image 1](https://imgur.com/9ohNGFu)
+![Image 2](https://imgur.com/ArueFpS)
 
 
 ## ファイル構造
@@ -102,7 +102,7 @@ app = Flask(__name__) # Flaskアプリケーションを作成
 
 ここでは、アプリケーションのために必要なモジュールをインポートし、ログファイルの名前を設定して、Flaskのインスタンスを生成しています。
 
-![Image 1](https://imgur.com/2IZzJU3.jpg)
+![Image 4](https://imgur.com/2IZzJU3.jpg)
 
 ## ルートへのアクセス
 
