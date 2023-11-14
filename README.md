@@ -283,8 +283,9 @@ def make_logs():
 
 ・データベース中身  
 ![Image 1](https://imgur.com/dG7dJ5R.jpg)  
+
   
-その他補足  
+■ その他補足  
 ・NoSQLとは  
 https://www.kagoya.jp/howto/it-glossary/server/nosql/  
 ・Firebase firestore とは  
