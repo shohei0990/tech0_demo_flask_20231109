@@ -256,15 +256,20 @@ def make_logs():
 ```
 掲示板のログエントリからHTMLを生成する関数です。
 
+  
 
+
+  
 ## 3.Flaskステップアップ課題
 
 ### 掲示板アプリのHTMLをテンプレートエンジンに置き換えみよう
 ① HTMLメインページのdef make_top_page_html()をsample0で行ったテンプレートエンジンに置き換えてみよう。  
   → sample2ファイルに答え合わせコード有
 
-② JSONログファイルをNoSQL データベースであるfirebaseに置き換えてみよう。
-  → sample3 ファイルに答え合わせコード有
+② JSONログファイルをNoSQL データベースであるfirebaseに置き換えてみよう。  
+  → sample3 ファイルに答え合わせコード有  
+
+  https://qiita.com/Mikumirai/items/f8a2ead6a6a1a4f57df8
 
 
   
