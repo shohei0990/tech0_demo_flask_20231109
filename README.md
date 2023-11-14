@@ -266,11 +266,17 @@ def make_logs():
 ① HTMLメインページのdef make_top_page_html()をsample0で行ったテンプレートエンジンに置き換えてみよう。  
   → sample2ファイルに答え合わせコード有
 
-② JSONログファイルをNoSQL データベースであるfirebaseに置き換えてみよう。  
+② JSONログファイルをNoSQLデータベースであるfirebase firestoreのDBに置き換えてみよう。  
   → sample3 ファイルに答え合わせコード有  
 
 ・firebase firestoreの作成方法と秘密鍵の取得方法  
-  https://qiita.com/Mikumirai/items/f8a2ead6a6a1a4f57df8
+  https://qiita.com/Mikumirai/items/f8a2ead6a6a1a4f57df8  
+  
+  ```python 
+  cred = credentials.Certificate('tech020231115-firebase-adminsdk-861ji-b3420c8933.json') # firebase サービスアカウントのpython 秘密鍵からダウンロードしてね
+  firebase_admin.initialize_app(cred)
+  ```
+  秘密鍵をダウンロードした後に、適当なディレクトリに保存、ファイルを読み込むようにしてください。
 
 ・掲示板アプリ（特に変わりはありません）
 ![Image 1](https://imgur.com/WIF4D3p.jpg)
