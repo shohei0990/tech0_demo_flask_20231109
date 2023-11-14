@@ -26,7 +26,7 @@ sample1/            # flask の掲示板アプリフォルダ
 └── bbs_log.json    # flask の掲示板アプリ書込・読込用jsonファイル
 
 sample2/            # 発展編(省略): 掲示板アプリのテンプレートファイル活用
-sample3/            # 発展編(省略)：ログデータのfirebase Nosql 活用
+sample3/            # 発展編(省略)：ログデータのfirebase NosqlDB 活用
 ```
 ## 1. 初期導入 (ファイル:sample0)
 ・最初に簡単なコードで、flaskに慣れてみよう。
@@ -269,7 +269,6 @@ def make_logs():
 ② JSONログファイルをNoSQLデータベースであるfirebase firestoreのDBに置き換えてみよう。  
   → sample3 ファイルに答え合わせコード有、firestoreは構築する必要があります。(無料)  
 
-
 ・firebase firestoreの作成方法と秘密鍵の取得方法  
   https://qiita.com/Mikumirai/items/f8a2ead6a6a1a4f57df8  
   
@@ -283,7 +282,13 @@ def make_logs():
 ![Image 1](https://imgur.com/WIF4D3p.jpg)
 
 ・データベース中身  
-![Image 1](https://imgur.com/dG7dJ5R.jpg)
+![Image 1](https://imgur.com/dG7dJ5R.jpg)  
+  
+その他補足
+・NoSQLとは
+https://www.kagoya.jp/howto/it-glossary/server/nosql/
+・Firebase firestore とは
+https://zenn.dev/yucatio/articles/173f386c471398
 
 
 
