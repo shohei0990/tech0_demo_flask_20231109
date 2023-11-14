@@ -269,7 +269,12 @@ def make_logs():
 ② JSONログファイルをNoSQL データベースであるfirebaseに置き換えてみよう。  
   → sample3 ファイルに答え合わせコード有  
 
+・firebase firestoreの作成方法と秘密鍵の取得方法  
   https://qiita.com/Mikumirai/items/f8a2ead6a6a1a4f57df8
+
+・データベース中身  
+![Image 1](https://imgur.com/dG7dJ5R.jpg)
+
 
 
   
