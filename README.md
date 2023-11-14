@@ -267,7 +267,8 @@ def make_logs():
   → sample2ファイルに答え合わせコード有
 
 ② JSONログファイルをNoSQLデータベースであるfirebase firestoreのDBに置き換えてみよう。  
-  → sample3 ファイルに答え合わせコード有  
+  → sample3 ファイルに答え合わせコード有、firestoreは構築する必要があります。(無料)  
+
 
 ・firebase firestoreの作成方法と秘密鍵の取得方法  
   https://qiita.com/Mikumirai/items/f8a2ead6a6a1a4f57df8  
