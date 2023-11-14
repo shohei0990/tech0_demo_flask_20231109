@@ -272,6 +272,9 @@ def make_logs():
 ・firebase firestoreの作成方法と秘密鍵の取得方法  
   https://qiita.com/Mikumirai/items/f8a2ead6a6a1a4f57df8
 
+・掲示板アプリ（特に変わりはありません）
+![Image 1](https://imgur.com/WIF4D3p.jpg)
+
 ・データベース中身  
 ![Image 1](https://imgur.com/dG7dJ5R.jpg)
 
