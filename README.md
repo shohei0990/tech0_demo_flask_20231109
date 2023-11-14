@@ -11,7 +11,7 @@ Flaskではシンプルでカスタマイズ性が高いというメリットを
 ・掲示板アプリ
 ![Image 2](https://imgur.com/A1agwmV.jpg)
   
-・掲示板動作
+・掲示板動作例
 ![Image 1](https://imgur.com/MwBx1lK.jpg)
 
 ## ファイル構造
@@ -24,6 +24,9 @@ sample0/            # flask のsampleアプリフォルダ
 sample1/            # flask の掲示板アプリフォルダ
 ├── bbs.py          # flask の掲示板アプリコード
 └── bbs_log.json    # flask の掲示板アプリ書込・読込用jsonファイル
+
+sample2/            # 発展編(省略): 掲示板アプリのテンプレートファイル活用
+sample3/            # 発展編(省略)：ログデータのfirebase Nosql 活用
 ```
 ## 1. 初期導入 (ファイル:sample0)
 ・最初に簡単なコードで、flaskに慣れてみよう。
@@ -257,9 +260,11 @@ def make_logs():
 ## 3.Flaskステップアップ課題
 
 ### 掲示板アプリのHTMLをテンプレートエンジンに置き換えみよう
-① HTMLメインページのdef make_top_page_html()をsample0で行ったテンプレートエンジンに置き換えてみよう。
+① HTMLメインページのdef make_top_page_html()をsample0で行ったテンプレートエンジンに置き換えてみよう。  
+  → sample2ファイルに答え合わせコード有
 
-② JSONログファイルをNoSQL データベースであるfirebaseに置き換えてみよう。（作成中）
+② JSONログファイルをNoSQL データベースであるfirebaseに置き換えてみよう。
+  → sample3 ファイルに答え合わせコード有
 
 
   
